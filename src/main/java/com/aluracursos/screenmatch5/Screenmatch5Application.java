@@ -1,5 +1,6 @@
 package com.aluracursos.screenmatch5;
 
+import com.aluracursos.screenmatch5.service.ConsumoAPI;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -13,7 +14,9 @@ public class Screenmatch5Application implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		System.out.println("Hola mundo desde Spring");
+		var consumoApi = new ConsumoAPI();
+		var json = consumoApi.obtenerDatos("https://www.episodate.com/api/show-details?q=46778");
+		System.out.println(json);
 
 	}
 }
