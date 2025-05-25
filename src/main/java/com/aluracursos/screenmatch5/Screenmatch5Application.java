@@ -17,7 +17,7 @@ public class Screenmatch5Application implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		var consumoApi = new ConsumoAPI();
-		var json = consumoApi.obtenerDatos("https://www.episodate.com/api/show-details?q=46778");
+		var json = consumoApi.obtenerDatos("http://www.omdbapi.com/?t=Stranger+Things&&apikey=812f93ca");
 		System.out.println(json);
 		ConvierteDatos conversor = new ConvierteDatos();
 		var datos = conversor.obtenerDatos(json, DatosSeries.class);
