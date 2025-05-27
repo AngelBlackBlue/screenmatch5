@@ -1,7 +1,9 @@
 package com.aluracursos.screenmatch5.principal;
 
+import com.aluracursos.screenmatch5.model.DatosSeries;
 import com.aluracursos.screenmatch5.model.DatosTemporada;
 import com.aluracursos.screenmatch5.service.ConsumoAPI;
+import com.aluracursos.screenmatch5.service.ConvierteDatos;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,17 +15,20 @@ public class Principal {
     private ConsumoAPI consumoAPI = new ConsumoAPI();
     private final String URL_BASE = "http://www.omdbapi.com/?t=";
     private final String APY_KEY = "&apikey=812f93ca";
+    private ConvierteDatos conversor = new ConvierteDatos();
+
+
 
     public void muestraElMenu(){
         System.out.println("Ingres el nombre de la serie: ");
         var nombreSerie = teclado.nextLine();
         var json = consumoAPI.obtenerDatos( URL_BASE + nombreSerie.replace(" ", "+") + APY_KEY);
-        var datos = conversor.
-
+        var datos = conversor.obtenerDatos(json, DatosSeries.class);
+        // Busca los datos de todas las temporadas
         List<DatosTemporada> temporadas = new ArrayList<>();
 
         for (int i = 1; i < datos.totalTemporadas() ; i++) {
-            json = consumoApi.obtenerDatos("https://www.omdbapi.com/?t=Stranger+Things&Season="+i+"&&apikey=812f93ca");
+            json = consumoAPI.obtenerDatos( URL_BASE + nombreSerie.replace(" ", "+"+"&Season=" + i + APY_KEY ) );
             var datosTemporadas = conversor.obtenerDatos(json, DatosTemporada.class);
             temporadas.add(datosTemporadas);
         }
