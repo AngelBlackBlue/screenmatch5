@@ -1,5 +1,6 @@
 package com.aluracursos.screenmatch5.principal;
 
+import com.aluracursos.screenmatch5.model.DatosEpisodio;
 import com.aluracursos.screenmatch5.model.DatosSeries;
 import com.aluracursos.screenmatch5.model.DatosTemporada;
 import com.aluracursos.screenmatch5.service.ConsumoAPI;
@@ -36,8 +37,17 @@ public class Principal {
             var datosTemporadas = conversor.obtenerDatos(json, DatosTemporada.class);
             temporadas.add(datosTemporadas);
         }
+        //temporadas.forEach(System.out::println);
 
-        temporadas.forEach(System.out::println);
+        //Mostrar solo el titulo de los episodios para las temporadas
+        for (int i = 0; i < datos.totalTemporadas(); i++) {
+            List<DatosEpisodio> episodiosTemporadas = temporadas.get(i).episodeos();
+            System.out.println("Episodios: ");
+            for (int j = 0; j < episodiosTemporadas.size() ; j++) {
+                System.out.println(episodiosTemporadas.get(j).titulo());
 
+            }
+        }
+        
     }
 }
