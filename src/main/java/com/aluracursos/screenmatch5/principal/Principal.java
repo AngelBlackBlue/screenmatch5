@@ -27,12 +27,12 @@ public class Principal {
         var json = consumoAPI.obtenerDatos( URL_BASE + nombreSerie.replace(" ", "+") + APY_KEY);
         var datos = conversor.obtenerDatos(json, DatosSeries.class);
         System.out.println(datos);
-
+         //http://www.omdbapi.com/?t=Game of Thrones&Season=1&Episode=1
         // Busca los datos de todas las temporadas
         List<DatosTemporada> temporadas = new ArrayList<>();
 
-        for (int i = 1; i < datos.totalTemporadas() ; i++) {
-            json = consumoAPI.obtenerDatos( URL_BASE + nombreSerie.replace(" ", "+"+"&Season=" + i + APY_KEY ) );
+        for (int i = 1; i <= datos.totalTemporadas() ; i++) {
+            json = consumoAPI.obtenerDatos( URL_BASE + nombreSerie.replace(" ", "+") +"&Season=" + i + APY_KEY );
             var datosTemporadas = conversor.obtenerDatos(json, DatosTemporada.class);
             temporadas.add(datosTemporadas);
         }
