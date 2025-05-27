@@ -33,15 +33,7 @@ public class Screenmatch5Application implements CommandLineRunner {
 		DatosEpisodio episodio = conversor.obtenerDatos(json, DatosEpisodio.class);
 		System.out.println(episodio);
 
-		List<DatosTemporada> temporadas = new ArrayList<>();
 
-		for (int i = 1; i < datos.totalTemporadas() ; i++) {
-			json = consumoApi.obtenerDatos("https://www.omdbapi.com/?t=Stranger+Things&Season="+i+"&&apikey=812f93ca");
-			var datosTemporadas = conversor.obtenerDatos(json, DatosTemporada.class);
-			temporadas.add(datosTemporadas);
-		}
-
-		temporadas.forEach(System.out::println);
 
 
 
