@@ -20,10 +20,14 @@ public class Principal {
 
 
     public void muestraElMenu(){
+
+        //Busca los datos de la serie
         System.out.println("Ingres el nombre de la serie: ");
         var nombreSerie = teclado.nextLine();
         var json = consumoAPI.obtenerDatos( URL_BASE + nombreSerie.replace(" ", "+") + APY_KEY);
         var datos = conversor.obtenerDatos(json, DatosSeries.class);
+        System.out.println(datos);
+
         // Busca los datos de todas las temporadas
         List<DatosTemporada> temporadas = new ArrayList<>();
 
