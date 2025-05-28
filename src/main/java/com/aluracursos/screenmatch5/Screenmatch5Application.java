@@ -1,6 +1,7 @@
 package com.aluracursos.screenmatch5;
 
 
+import com.aluracursos.screenmatch5.principal.EjemploStreams;
 import com.aluracursos.screenmatch5.principal.Principal;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -15,8 +16,12 @@ public class Screenmatch5Application implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		Principal principal = new Principal();
-		principal.muestraElMenu();
+//		Principal principal = new Principal();
+//		principal.muestraElMenu();
+
+		EjemploStreams ejemploStreams = new EjemploStreams();
+		ejemploStreams.muestraEjemplo();
+
 
 	}
 }
