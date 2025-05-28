@@ -28,7 +28,7 @@ public class Principal {
         var json = consumoAPI.obtenerDatos( URL_BASE + nombreSerie.replace(" ", "+") + APY_KEY);
         var datos = conversor.obtenerDatos(json, DatosSeries.class);
         System.out.println(datos);
-         //http://www.omdbapi.com/?t=Game of Thrones&Season=1&Episode=1
+        //http://www.omdbapi.com/?t=Game of Thrones&Season=1&Episode=1
         // Busca los datos de todas las temporadas
         List<DatosTemporada> temporadas = new ArrayList<>();
 
@@ -40,14 +40,16 @@ public class Principal {
         //temporadas.forEach(System.out::println);
 
         //Mostrar solo el titulo de los episodios para las temporadas
-        for (int i = 0; i < datos.totalTemporadas(); i++) {
-            List<DatosEpisodio> episodiosTemporadas = temporadas.get(i).episodeos();
-            System.out.println("Episodios: ");
-            for (int j = 0; j < episodiosTemporadas.size() ; j++) {
-                System.out.println(episodiosTemporadas.get(j).titulo());
+//        for (int i = 0; i < datos.totalTemporadas(); i++) {
+//            List<DatosEpisodio> episodiosTemporadas = temporadas.get(i).episodeos();
+//            System.out.println("Episodios: ");
+//            for (int j = 0; j < episodiosTemporadas.size() ; j++) {
+//                System.out.println(episodiosTemporadas.get(j).titulo());
+//            }
+//        }
 
-            }
-        }
-        
+        //funicones lambdas
+        temporadas.forEach(t -> t.episodeos().forEach(e -> System.out.println(e.titulo())));
+
     }
 }
