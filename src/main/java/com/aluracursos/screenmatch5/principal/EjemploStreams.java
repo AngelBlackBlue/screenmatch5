@@ -10,6 +10,9 @@ public class EjemploStreams {
 
         nombres.stream()
                 .sorted()
+                .limit(4)
+                .filter(n -> n.startsWith("L"))
+                .map(n -> n.toLowerCase())
                 .forEach(System.out::println);
 
     }
