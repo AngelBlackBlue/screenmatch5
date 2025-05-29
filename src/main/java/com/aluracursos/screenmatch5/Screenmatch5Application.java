@@ -1,8 +1,5 @@
 package com.aluracursos.screenmatch5;
 
-
-import com.aluracursos.screenmatch5.model.Episodios;
-import com.aluracursos.screenmatch5.principal.EjemploStreams;
 import com.aluracursos.screenmatch5.principal.Principal;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
