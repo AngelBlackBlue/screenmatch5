@@ -116,6 +116,18 @@ public class Principal {
                 .collect(Collectors.groupingBy(Episodios::getTemporada, Collectors.averagingDouble(Episodios::getEvaluacion)));
         System.out.println(evaluacionPorTemporada);
 
+        //Estadisticas
+        System.out.println("Estadisticas: \n ");
+        DoubleSummaryStatistics est = episodios.stream()
+                .filter(e -> e.getEvaluacion()>0.0)
+                .collect(Collectors.summarizingDouble(Episodios::getEvaluacion));
+        System.out.println(est);
+        System.out.println("Media de la evaluación : " + est.getAverage());
+        System.out.println("Cantidad de evalucines : " + est.getCount());
+        System.out.println("Mejor evaluación: " + est.getMax());
+        System.out.println("Pero evaluación: " + est.getMin());
+        System.out.println("Suma de todas las evaluaciones: " + est.getSum());
+
 
 
 
