@@ -89,8 +89,8 @@ public class Principal {
                 .forEach( e -> {
                     System.out.println(
                             "Temporada " + e.getTemporada() +
-                                    "Episodio " + e.getTitulo() +
-                                    "Fecha de lanzamiento " + e.getFechaDeLanzamineto()
+                                    " Episodio: " + e.getTitulo() +
+                                    ", Fecha de lanzamiento: " + e.getFechaDeLanzamineto()
                     );
                 });
 
@@ -101,12 +101,22 @@ public class Principal {
                 .filter(e -> e.getTitulo().toLowerCase().contains(tituloPorcion.toLowerCase()))
                 .findFirst();
 
+
+        //Evaluación por temporada
         if (episodioBuscado.isPresent() ) {
-            System.out.println(" Episodio encontrado");
+            System.out.println("Episodio encontrado: ");
             System.out.println("Los datos son: " + episodioBuscado.get());
         } else {
-            System.out.println(episodioBuscado);
+            System.out.println("Episodio no encontrado");
         }
+
+        System.out.println("Evaluación por temporada: ");
+        Map<Integer, Double> evaluacionPorTemporada = episodios.stream()
+                .filter(e -> e.getEvaluacion()>0.0)
+                .collect(Collectors.groupingBy(Episodios::getTemporada, Collectors.averagingDouble(Episodios::getEvaluacion)));
+        System.out.println(evaluacionPorTemporada);
+
+
 
 
     }
